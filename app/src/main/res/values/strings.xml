@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Teacher</string>
+    <string name="title_activity_sehd">SehdActivity</string>
+    <string name="title_activity_rename">RenameActivity</string>
+</resources>
