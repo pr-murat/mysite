@@ -9,63 +9,70 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.pc.myapplication.AddWProgramActivity">
 
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextWP"
-        android:width="250dip"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:textColor="#000000"
-        android:textSize="20dip" />
+        android:gravity="center_vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAddWP"
-        android:text="Файлды тандоо"
-        android:layout_above="@+id/btnSaveFileAndTema"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:text="@string/infoAddProgrammActivity"
+            android:id="@+id/infoAddProgrammActivity"
+            android:gravity="center"
+            android:textSize="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Тема:"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
-        android:textSize="20dip" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тема:"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="66dp"
+            android:textSize="20dip" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Файл:"
-        android:id="@+id/textView7"
-        android:textSize="20dip"
-        android:layout_below="@+id/editTextWP"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextWP"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:textColor="#000000"
+            android:textSize="20dip" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewRes"
-        android:textSize="20dip"
-        android:layout_below="@+id/textView7"
-        android:layout_alignEnd="@+id/editTextWP"
-        android:layout_alignStart="@+id/editTextWP"
-        android:gravity="center_horizontal"
-        android:textColor="#000000"
-        android:paddingBottom="15dip"
-        android:paddingTop="15dip" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Файл:"
+            android:id="@+id/textView7"
+            android:textSize="20dip"
+            android:layout_below="@+id/editTextWP"
+            android:layout_alignEnd="@+id/textView3" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Сактоо"
-        android:id="@+id/btnSaveFileAndTema"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRes"
+            android:textSize="20dip"
+            android:gravity="center_horizontal"
+            android:textColor="#000000"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сактоо"
+            android:id="@+id/btnSaveFileAndTema"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -14,14 +14,17 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
 
         <Spinner
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinner"
             android:layout_gravity="center_horizontal"
-            android:background="#010c48" />
+            android:background="#010c48"
+            android:paddingTop="10dip"
+            android:paddingBottom="10dip" />
 
         <ListView
             android:layout_width="match_parent"
@@ -32,5 +35,18 @@
             android:paddingRight="20dip"
             android:paddingTop="5dip"
             android:paddingBottom="5dip" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/textViewNoShed"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:textSize="30dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingBottom="50dip"
+            android:paddingTop="50dip" />
     </LinearLayout>
+
 </RelativeLayout>

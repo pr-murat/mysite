@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ import java.util.Map;
 
 public class SheduleActivity extends AppCompatActivity {
 
-
     ArrayList<String> identifikators = new ArrayList<>();
     ArrayList<HashMap<String, Object>> listShed;
     DBHelper dbHelper;
@@ -33,13 +33,12 @@ public class SheduleActivity extends AppCompatActivity {
     ListView listViewShedule;
     int selectDay;
     String isEmptySub;
-
-    String[] days = {"Дүйшөмбү","Шейшемби","Шаршемби","Бейбшемби","Жума","Ишемби"};
+    TextView textViewNoShed;
+    String[] days = {"Дүйшөмбү","Шейшемби","Шаршемби","Бейшемби","Жума","Ишемби"};
     //int today;
 
     public boolean onCreateOptionsMenu(Menu menu){
         menu.add("Кошуу");
-        menu.add("Өчүрүү");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -51,13 +50,7 @@ public class SheduleActivity extends AppCompatActivity {
                 startActivity(addSubIntent);
                 //Toast.makeText(this, "Нажата "+item.toString(), Toast.LENGTH_SHORT).show();
                 break;
-            case "Өчүрүү":
-
-                break;
         }
-
-
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -66,9 +59,12 @@ public class SheduleActivity extends AppCompatActivity {
     public void onStart(){
         super.onStart();
         showlist(today+1);
-
     }
-
+    @Override
+    public void onPause(){
+        super.onPause();
+        textViewNoShed.setText("");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +78,8 @@ public class SheduleActivity extends AppCompatActivity {
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         listViewShedule = (ListView) findViewById(R.id.listViewShedule);
+        textViewNoShed = (TextView) findViewById(R.id.textViewNoShed);
+        textViewNoShed.setEnabled(false);
 
         spinner.setAdapter(adapter);
         spinner.setPrompt("Күн");
@@ -109,21 +107,16 @@ public class SheduleActivity extends AppCompatActivity {
                 startActivity(intentView);
             }
         });
-
-
     }
      void showlist(int today){
-
-
          identifikators.clear();
-
          selectDay = today;
-        dbHelper = new DBHelper(this);
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
-        //ArrayList<HashMap<String, Object>> listShed = getInformationTable(database, 2);
-        listShed = new ArrayList<HashMap<String, Object>>();
-        Cursor cursor = database.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
-        if (cursor.moveToFirst()){
+         dbHelper = new DBHelper(this);
+         SQLiteDatabase database = dbHelper.getWritableDatabase();
+         //ArrayList<HashMap<String, Object>> listShed = getInformationTable(database, 2);
+         listShed = new ArrayList<HashMap<String, Object>>();
+         Cursor cursor = database.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+         if (cursor.moveToFirst()){
             do{
                 if (today == Integer.parseInt(cursor.getString(1)) && !cursor.getString(3).equals("okoshka")){
                     HashMap map = new HashMap<String, Object>();
@@ -136,24 +129,15 @@ public class SheduleActivity extends AppCompatActivity {
             }while(cursor.moveToNext());
             isEmptySub = "true";
             if(listShed.isEmpty()){
-                HashMap map = new HashMap<String, Object>();
-                map.put("title", "САБАКТАР ЖОК");
-                map.put("info", "");
-                listShed.add(map);
+                textViewNoShed.setText("Сабактар жок");
+                textViewNoShed.setEnabled(true);
                 isEmptySub = "false";
             }
-
         }
-
         String[] from = {"title", "info"};
         int[] to = {R.id.idTitle, R.id.idInfor};
         SimpleAdapter adapterList = new SimpleAdapter(getApplicationContext(), listShed, R.layout.simple_list_item2, from, to);
         listViewShedule.setAdapter(adapterList);
-
-
-
-
         dbHelper.close();
     }
-
 }

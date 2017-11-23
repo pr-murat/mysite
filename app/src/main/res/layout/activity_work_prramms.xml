@@ -29,6 +29,10 @@
             android:layout_height="wrap_content"
             android:text="+"
             android:id="@+id/btnStartActivity"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:background="#f7a80b"
+            android:textColor="#ffffff"
+            android:textStyle="normal|bold"
+            android:textSize="25dp" />
     </LinearLayout>
 </RelativeLayout>

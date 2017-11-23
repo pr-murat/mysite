@@ -57,6 +57,12 @@ public class WorkPrrammsActivity extends AppCompatActivity implements View.OnCli
         showWorkPrograms();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        showWorkPrograms();
+    }
+
     private void showWorkPrograms(){
         textViewNameSubjectWP = (TextView) findViewById(R.id.textViewNameSubjectWP);
 
